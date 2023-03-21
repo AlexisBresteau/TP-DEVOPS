@@ -11,14 +11,9 @@ jobs:
     steps:
       # Clone le repository dans la VM runner
       - uses: actions/checkout@v3
-      - name: "Hello world"
-        run: "echo \"Hello world job1\""
-  job2:
-    runs-on: ubuntu-latest
-    needs: job1
-    steps:
-      - uses: actions/checkout@v3
-      - name: "Hello world"
-        run: "echo \"Hello world job2\""
-
-
+      - name: Run linter
+        run: "npm run lint"
+      - name: Run uni-tests
+        run: "npm run test-unit"
+      - name: Run e2e-test
+        run: "npm run test-e2e"
