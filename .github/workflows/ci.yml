@@ -1,9 +1,24 @@
-name: CI
-on: [pull_request]
+name: Workflow example
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
-  hello:
+  job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello World
-        run: echo "Hello World from Github Actions!"
+      # Clone le repository dans la VM runner
+      - uses: actions/checkout@v3
+      - name: "Hello world"
+        run: "echo \"Hello world job1\""
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Hello world"
+        run: "echo \"Hello world job2\""
+
+
