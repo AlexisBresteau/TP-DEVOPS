@@ -11,6 +11,8 @@ jobs:
     steps:
       # Clone le repository dans la VM runner
       - uses: actions/checkout@v3
+      - name: "install deps"
+        run: "npm install --include=dev"
       - name: "run linter"
         run: "npm run lint"
       - name: "run unit-tests"
