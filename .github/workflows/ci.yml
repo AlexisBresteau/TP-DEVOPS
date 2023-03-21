@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  job1:
+  tests:
     runs-on: ubuntu-latest
     steps:
       # Clone le repository dans la VM runner
