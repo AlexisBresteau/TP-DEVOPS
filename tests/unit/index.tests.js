@@ -33,3 +33,9 @@ describe('fibRecursive', function () {
         assert.throws(() => fibRecursive('foo'), RangeError);
     });
 });
+
+after(function () {
+    // exit the process after all tests have run
+    process.exit(0);
+});
+
