@@ -11,6 +11,7 @@ jobs:
     steps:
       # Clone le repository dans la VM runner
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
       - name: "install deps"
         run: "npm install --include=dev"
       - name: "run linter"
@@ -19,5 +20,3 @@ jobs:
         run: "npm run test-unit"
       - name: "run test e2E"
         run: "npm run test-e2e"
-  
-
