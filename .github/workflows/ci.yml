@@ -6,15 +6,17 @@ on:
   pull_request:
 
 jobs:
-  job1:
+  tests:
     runs-on: ubuntu-latest
     steps:
       # Clone le repository dans la VM runner
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-      - name: Run linter
+      - name: "install deps"
+        run: "npm install --include=dev"
+      - name: "run linter"
         run: "npm run lint"
-      - name: Run uni-tests
+      - name: "run unit-tests"
         run: "npm run test-unit"
-      - name: Run e2e-test
+      - name: "run test e2E"
         run: "npm run test-e2e"
