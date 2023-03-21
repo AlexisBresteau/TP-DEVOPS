@@ -10,8 +10,10 @@ jobs:
     steps:
       # Clone le repository dans la VM runner
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
 
       - name: "Lint"
+        use: action/
         run: "npm run lint"
 
       - name: "Test-unit"
