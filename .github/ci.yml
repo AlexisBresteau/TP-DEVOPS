@@ -1,0 +1,24 @@
+name: Workflow example
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      # Clone le repository dans la VM runner
+      - uses: actions/checkout@v3
+      - name: "Hello world"
+        run: "echo \"Hello world job1\""
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Hello world"
+        run: "echo \"Hello world job2\""
+
+
