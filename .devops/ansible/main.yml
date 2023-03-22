@@ -3,7 +3,26 @@
   become: true
   tasks:
     # Install Node.js
-    - name: Install Node.js
+    - name: Install Node.js et npm 
       apt:
-        name: nodejs
+        name: "{{ item }}"
         state: present
+      loop:
+        - nodejs
+        - npm
+
+    - name: Creates directory
+      file:
+        path: /var/www/fibonacci-api
+        state: directory
+
+    - name: Git checkout
+      ansible.builtin.git:
+        repo: 'https://github.com/guivin/TP-DEVOPS.git'
+        dest: /var/www/fibonacci-api
+
+    - name: Install "package.json" node.js package.
+      npm:
+        name: package.json
+        path: /var/www/fibonacci-api
+

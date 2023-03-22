@@ -1,19 +1,35 @@
-variable "subscription_id" {
-  type        = string
-  description = "ID de l'abonnement Azure"
+variable "resourceGroup" {
+  type = string
+  default = "tfstate"
 }
 
-variable "client_id" {
-  type        = string
-  description = "ID du client Azure"
+variable "storageAccounts" {
+  type = string
+  default = "tfstate6739"
 }
 
-variable "client_secret" {
+#variable "location" {
+#    type = string
+#  default = "westeurope"
+#}
+
+#variable "virtualNetwork" {
+#    type = string
+#  default = "azure-vnet"
+#}
+
+#variable "prefix" {
+#  default = "tfvmex"
+#}
+
+variable "resource_group_location" {
   type        = string
-  description = "Secret du client Azure"
+  default     = "westeurope"
+  description = "Location of the resource group."
 }
 
-variable "tenant_id" {
+variable "resource_group_name_prefix" {
   type        = string
-  description = "ID du locataire Azure"
+  default     = "rg"
+  description = "Prefix of the resource group name that's combined with a random ID so name is unique in your Azure subscription."
 }
